@@ -31,7 +31,7 @@ CREATE TABLE [products] (
     Name VARCHAR(255) NOT NULL,
     articul INT NOT NULL UNIQUE,
     unitCountName VARCHAR(50) NOT NULL DEFAULT 'Шт.',
-    price INT NOT NULL DEFAULT 0,
+    price MONEY NOT NULL DEFAULT 0,
     note VARCHAR(255)
 );
 GO
@@ -40,7 +40,8 @@ CREATE TABLE [payments] (
     paymentDate DATE NOT NULL,
     customer_id  INT NOT NULL FOREIGN KEY REFERENCES [dbo].[customers](id),
     product_id INT NOT NULL FOREIGN KEY REFERENCES [dbo].[products](id),
-    quantity INT NOT NULL DEFAULT 1
+    quantity INT NOT NULL DEFAULT 1,
+    cost MONEY NOT NULL DEFAULT 0
 );
 
 --создаем ограничения
